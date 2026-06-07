@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Apuntes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Generador de Apuntes</h1>
+            <p>Sube un PDF o Word y obtén un resumen o apuntes para estudiar</p>
+        </header>
+
+        <main>
+            <!-- Zona de carga -->
+            <div class="upload-zone" id="uploadZone">
+                <div class="upload-content">
+                    <span class="upload-icon">📄</span>
+                    <p class="upload-text">Arrastra tu archivo aquí</p>
+                    <p class="upload-subtext">o</p>
+                    <label class="upload-btn">
+                        Seleccionar archivo
+                        <input type="file" id="fileInput" accept=".pdf,.doc,.docx" hidden>
+                    </label>
+                    <p class="upload-formats">Formatos: PDF, DOC, DOCX</p>
+                </div>
+            </div>
+
+            <!-- Info del archivo -->
+            <div class="file-info hidden" id="fileInfo">
+                <div class="file-details">
+                    <span class="file-icon">📎</span>
+                    <div class="file-meta">
+                        <p class="file-name" id="fileName"></p>
+                        <p class="file-size" id="fileSize"></p>
+                    </div>
+                    <button class="remove-btn" id="removeFile">✕</button>
+                </div>
+            </div>
+
+            <!-- Opciones de generación -->
+            <div class="options hidden" id="options">
+                <h3>¿Qué quieres generar?</h3>
+                <div class="options-grid">
+                    <button class="option-btn" data-type="resumen">
+                        <span>📝</span>
+                        <strong>Resumen</strong>
+                        <small>Síntesis concisa del contenido</small>
+                    </button>
+                    <button class="option-btn" data-type="apuntes">
+                        <span>📖</span>
+                        <strong>Apuntes</strong>
+                        <small>Notas organizadas para estudiar</small>
+                    </button>
+                    <button class="option-btn" data-type="esquema">
+                        <span>🗂️</span>
+                        <strong>Esquema</strong>
+                        <small>Estructura jerárquica de ideas</small>
+                    </button>
+                    <button class="option-btn" data-type="preguntas">
+                        <span>❓</span>
+                        <strong>Preguntas</strong>
+                        <small>Test para autoevaluación</small>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading -->
+            <div class="loading hidden" id="loading">
+                <div class="spinner"></div>
+                <p>Procesando documento...</p>
+            </div>
+
+            <!-- Resultado -->
+            <div class="result hidden" id="result">
+                <div class="result-header">
+                    <h3 id="resultTitle">Resultado</h3>
+                    <div class="result-actions">
+                        <button class="action-btn" id="copyBtn">📋 Copiar</button>
+                        <button class="action-btn" id="downloadBtn">⬇️ Descargar</button>
+                    </div>
+                </div>
+                <div class="result-content" id="resultContent"></div>
+                <button class="new-btn" id="newDocument">+ Nuevo documento</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- CDN para leer PDFs y Word -->
+    <script src="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js)"></script>
+    <script src="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js)"></script>
+    <script src="main.js"></script>
+</body>
+</html>
